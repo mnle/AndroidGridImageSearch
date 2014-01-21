@@ -1,11 +1,14 @@
 package com.yahoo.gridimagesearch;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class ImageResult {
+//Data model for results from G Image Search API
+public class ImageResult implements Serializable {
+	private static final long serialVersionUID = 111111111;
 	private String fullUrl;
 	private String thumbUrl;
 	
@@ -18,21 +21,27 @@ public class ImageResult {
 			this.thumbUrl = null;
 		}
 	}
-	
+	//Getting full size image
 	public String getFullURL() {
-		return fullUrl;
-		
+		return fullUrl;	
+	}
+	public void setFullURL(String fullUrl) {
+		this.fullUrl = fullUrl;
 	}
 	
+	//Getting thumb nail image size
 	public String getThumbURL() {
 		return thumbUrl;
-		
+	}
+	public void setThumbUrl(String thumbUrl) {
+		this.thumbUrl = thumbUrl;
 	}
 	
 	public String toString() {
 		return this.thumbUrl;
 	}
 
+	//Converting JSON to ArrayList
 	public static ArrayList<ImageResult> fromJSONArray(
 			JSONArray array) {
 		ArrayList<ImageResult> results = new ArrayList<ImageResult>(); 
